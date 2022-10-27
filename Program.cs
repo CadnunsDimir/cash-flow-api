@@ -18,6 +18,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+//TODO: change to post
+//TODO: create DB integration
+//TODO: create insert method on repository
 app.MapGet("/api/entries", (EntryRepository repository) =>
 {
     return repository.GetList();
