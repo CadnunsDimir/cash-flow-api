@@ -28,3 +28,27 @@ value decimal
 
 ### Aplicação
 A aplicação será desenvolvida em C# ASP .Net Core, o que permitirá a sua implantação em servidores linux e windows ou ainda a criação de um container docker com a aplicação.
+
+### Dependências Ambiente Local
+
+1. Instalar o .NET 6.0 SDK
+
+https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+
+2. Clonar o projeto
+
+3. Adicionar o repositório de dependencias do Nuget (se necessário)
+
+```
+dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
+```
+
+4. instalar as dependências
+```
+dotnet restore
+```
+
+5. rodar o projeto
+```
+dotnet run
+```

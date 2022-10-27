@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "cash_flow_api": {
+    "CashFlowApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,

@@ -4,7 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>cash_flow_api</RootNamespace>
+    <RootNamespace>CashFlowApi</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

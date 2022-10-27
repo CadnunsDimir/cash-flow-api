@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace cash_flow_api.Controllers;
+namespace CashFlowApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]

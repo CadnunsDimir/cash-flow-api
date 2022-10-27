@@ -1,4 +1,4 @@
-namespace cash_flow_api;
+namespace CashFlowApi;
 
 public class WeatherForecast
 {
