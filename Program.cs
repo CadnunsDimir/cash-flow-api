@@ -1,15 +1,15 @@
+using CashFlowApi.Models;
+using CashFlowApi.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<EntryRepository>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -18,8 +18,17 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+app.MapGet("/api/entries", (EntryRepository repository) =>
+{
+    return repository.GetList();
+})
+.WithName("GetEntries");
 
-app.MapControllers();
+app.MapGet("/api/entries/report", (EntryRepository repository) =>
+{
+    var list = repository.GetList();
+    return new TodayEntriesReport(list);
+})
+.WithName("GetEntriesTodayReport");
 
 app.Run();
