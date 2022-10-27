@@ -8,11 +8,11 @@ o sistema que permitirá o registro e consulta do fluxo de caixa de um comércio
 Será disponibilizado dois endpoints:
 1. Permitirá que os front-ends possam registrar os lançamentos
 ```
-    [POST] host:port/cash-flow/
+    [POST] host:port/api/cash-flow/
 ```
 2. Permitirá a consulta de um relatório do fluxo diário
 ```
-    [GET] host:port/cash-flow/report
+    [GET] host:port/api/cash-flow/report
 ```
   
   ### Dados
