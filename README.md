@@ -10,17 +10,21 @@ Será disponibilizado dois endpoints:
 ```
     [POST] host:port/api/cash-flow/
 ```
-2. Permitirá a consulta de um relatório do fluxo diário
+2. Permitirá que os front-ends possam listar todos os lançamentos
+```
+    [GET] host:port/api/cash-flow/
+```
+3. Permitirá a consulta de um relatório do fluxo diário
 ```
     [GET] host:port/api/cash-flow/report
 ```
   
   ### Dados
-Os dados serão guardados em um banco de dados mysql, que conterá uma tabela com a seguinte estrutura 
+Os dados seguirão uma estrutura similar ao comando abaixo, podendo futuramente ser usado para criar a tabela em um banco de dados:
 ```
 CREATE TABLE entries (
 id int IDENTITY, 
-datetime datetime, 
+date datetime, 
 description varchar(100), 
 value decimal
 )
@@ -28,3 +32,27 @@ value decimal
 
 ### Aplicação
 A aplicação será desenvolvida em C# ASP .Net Core, o que permitirá a sua implantação em servidores linux e windows ou ainda a criação de um container docker com a aplicação.
+
+### Dependências Ambiente Local
+
+1. Instalar o .NET 6.0 SDK
+
+https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+
+2. Clonar o projeto
+
+3. Adicionar o repositório de dependencias do Nuget (se necessário)
+
+```
+dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
+```
+
+4. instalar as dependências
+```
+dotnet restore
+```
+
+5. rodar o projeto
+```
+dotnet run
+```
