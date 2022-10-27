@@ -1,33 +1,21 @@
 using CashFlowApi.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace CashFlowApi.Repositories;
 public class EntryRepository {
+    private CashFlowDb db;
+
+    public EntryRepository(CashFlowDb db){
+        this.db = db;
+    }
+
+    private DbSet<Entry> Entries => db.Set<Entry>();
+
+    public Task<int> insert(Entry entry) {
+        this.Entries.Add(entry);
+        return this.db.SaveChangesAsync();
+    }
     public Entry[] GetList() {
-        var summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };        
-
-        var yesterdayEntries =  Enumerable.Range(1, 5).Select(index =>
-        new Entry
-        (
-            index,
-            DateTime.Now.AddDays(-1),
-            summaries[Random.Shared.Next(summaries.Length)],
-            3.42m * index
-        ))
-        .ToArray();
-
-        var todayEntries = Enumerable.Range(6, 9).Select(index =>
-        new Entry
-        (
-            index,
-            DateTime.Today.AddHours(index),
-            summaries[Random.Shared.Next(summaries.Length)],
-            3.42m * index
-        ))
-        .ToArray();
-
-        return yesterdayEntries.Concat(todayEntries).ToArray();
+        return this.Entries.ToArray();
     }
 }
