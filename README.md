@@ -10,17 +10,21 @@ Será disponibilizado dois endpoints:
 ```
     [POST] host:port/api/cash-flow/
 ```
-2. Permitirá a consulta de um relatório do fluxo diário
+2. Permitirá que os front-ends possam listar todos os lançamentos
+```
+    [GET] host:port/api/cash-flow/
+```
+3. Permitirá a consulta de um relatório do fluxo diário
 ```
     [GET] host:port/api/cash-flow/report
 ```
   
   ### Dados
-Os dados serão guardados em um banco de dados mysql, que conterá uma tabela com a seguinte estrutura 
+Os dados seguirão uma estrutura similar ao comando abaixo, podendo futuramente ser usado para criar a tabela em um banco de dados:
 ```
 CREATE TABLE entries (
 id int IDENTITY, 
-datetime datetime, 
+date datetime, 
 description varchar(100), 
 value decimal
 )

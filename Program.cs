@@ -1,7 +1,6 @@
 using CashFlowApi.Models;
 using CashFlowApi.Repositories;
 using Microsoft.EntityFrameworkCore;
-using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,17 +21,21 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-//TODO: Add Model View on post and get
-app.MapPost("/api/entries", async (Entry entry, EntryRepository repository) =>
+app.MapGet("/api/cash-flow", (EntryRepository repository) =>
 {
-    await repository.insert(entry);
-    Results.Created($"/todoitems/{entry.Id}", entry);
+    return EntryViewModel.MapList(repository.GetList());
 });
 
-app.MapGet("/api/entries/report", (EntryRepository repository) =>
+app.MapPost("/api/cash-flow", async (EntryViewModel viewModel, EntryRepository repository) =>
 {
-    var list = repository.GetList();
-    return new TodayEntriesReport(list);
+    var entry = viewModel.toDbModel();
+    await repository.insert(entry);
+    Results.Created("/api/cash-flow/", viewModel);
+});
+
+app.MapGet("/api/cash-flow/report", (EntryRepository repository) =>
+{    
+    return repository.GenerateTodayEntriesReport();
 });
 
  app.UseExceptionHandler(exceptionHandlerApp =>
@@ -40,7 +43,7 @@ app.MapGet("/api/entries/report", (EntryRepository repository) =>
      exceptionHandlerApp.Run(async context =>
      {
          context.Response.StatusCode = StatusCodes.Status500InternalServerError;    
-         await context.Response.WriteAsync("An exception was thrown.");
+         await context.Response.WriteAsync("Internal Error");
      });
  });
 
