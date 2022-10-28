@@ -50,12 +50,23 @@ dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
 ```
 cd CashFlowApi/
 ```
-4. instalar as dependências
+5. instalar as dependências
 ```
 dotnet restore
 ```
-
-5. rodar o projeto
+6. rodar o projeto
 ```
 dotnet run
+```
+
+Após instaladas as dependências, você pode rodar o projeto a partir da raiz com o seguinte comando:
+```
+dotnet run --project CashFlowApi
+```
+
+
+### Como rodar os testes
+
+```
+dotnet test
 ```
