@@ -4,6 +4,10 @@ o sistema que permitirá o registro e consulta do fluxo de caixa de um comércio
 
 ## Desenho da solução
 
+### Explicação da Arquitetura
+
+Mantive a estrura o mais simples possível, utilizando alguns endpoints para acessar a aplicação e uma estrutura de Repositório para gerenciar a busca de dados. Para não expor a entidade que representa a tabela de registros no banco de dados, criei um ViewModel e no caso do relatório, criei uma classe que informa o saldo do início do dia atual, as entradas (compras e vendas) que foram feitas no dia, e saldo atual (saldo inicio do dia + soma das entradas).
+
 ### EndPoints
 Será disponibilizado dois endpoints:
 1. Permitirá que os front-ends possam registrar os lançamentos
@@ -32,6 +36,8 @@ value decimal
 
 ### Aplicação
 A aplicação será desenvolvida em C# ASP .Net Core, o que permitirá a sua implantação em servidores linux e windows ou ainda a criação de um container docker com a aplicação.
+
+## Utilização do Projeto
 
 ### Dependências Ambiente Local
 
