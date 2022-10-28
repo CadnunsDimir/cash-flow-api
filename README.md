@@ -46,13 +46,27 @@ https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 ```
 dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
 ```
-
-4. instalar as dependências
+4. Pelo terminal, abrir a pasta do projeto CashFlowApi
+```
+cd CashFlowApi/
+```
+5. instalar as dependências
 ```
 dotnet restore
 ```
-
-5. rodar o projeto
+6. rodar o projeto
 ```
 dotnet run
+```
+
+Após instaladas as dependências, você pode rodar o projeto a partir da raiz com o seguinte comando:
+```
+dotnet run --project CashFlowApi
+```
+
+
+### Como rodar os testes
+
+```
+dotnet test
 ```

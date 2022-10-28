@@ -1,3 +1,4 @@
+
 using CashFlowApi.Models;
 using CashFlowApi.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -48,3 +49,5 @@ app.MapGet("/api/cash-flow/report", (EntryRepository repository) =>
  });
 
 app.Run();
+
+public partial class Program { }
