@@ -46,7 +46,10 @@ https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 ```
 dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
 ```
-
+4. Pelo terminal, abrir a pasta do projeto CashFlowApi
+```
+cd CashFlowApi/
+```
 4. instalar as dependências
 ```
 dotnet restore
